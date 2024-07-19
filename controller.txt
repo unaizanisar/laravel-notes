@@ -1,0 +1,26 @@
+CONTROLLER:
+Controller is a central unit which keeps everything connected: Model, View and Router.
+We take database in the Model and connect it with the controller, and controller takes it to the view.
+To make a controller, use this command:
+php artisan make:controller UserController (it will create the controller inside Https/Controllers)
+
+class UserController extends Controller
+{
+    function show(){
+        return "Hello from Controller.";
+    }
+}
+Then call this controller on the route:
+Go to web.php, first give the path of this controller: use App\Https\Controllers\UserController;
+Route::get("user",[UserController::class,'show']);
+
+PARAMETERS THROUGH URL:
+Route::get("user/{id}",[UserController::class,'show']);
+class UserController extends Controller
+{
+    function show($id){
+        return $id;
+    }
+}
+QUESTION?
+We made the controller through command line, is it possible mannually?

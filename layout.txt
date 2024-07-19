@@ -1,0 +1,5 @@
+LAYOUT
+Layout is used to reduce the code redundancy. It also helps to manage the code in more efficient way.
+There are two ways to create layout:
+-Layout using Component
+-Layout using Template Inheritance

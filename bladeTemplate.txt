@@ -1,0 +1,43 @@
+BLADE TEMPLATE:
+It is a laravel's template engine. 
+- It converts the plain text to php text.
+- Easy to use conditions and loops
+- Provides a template so we can use header and footers again and again.
+- Easy use for jQuery and JS.
+
+For Example:
+@if($name=="sam")
+<h2>Hi, {{$name}}</h2>
+@elseif ($name=="sami")
+<h2>Hi, {{$name}}</h2>
+@else
+<h2>Hi, unknown</h2>
+@endif
+Similarly, use for and foreach:
+@for(...)
+@endfor
+
+@foreach(...)
+@endforeach
+
+INCLUDE VIEW IN VIEW:
+1. Make any page in view, for example, inner.blade.php:
+<h3>Inner view page</h3>
+
+2. Inlude this page in another view page, for example, in hello.blade.php:
+<h1>Hello</h1>
+@include('inner')
+
+PHP IN JS:
+<script>
+    var data = @json($users);
+    console.warn(data)
+</script>
+
+CSRF FUNCTION:
+It is used specially when you are using forms.
+Simple write @csrf
+
+QUESTION?
+Can we use php tags in blade.php?
+How and where to place JS and bootstrap library?

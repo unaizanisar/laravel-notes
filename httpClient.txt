@@ -1,0 +1,30 @@
+HTTP CLIENT:
+Use API to fetch data.
+1. In UserController.php:
+use Illuminate\Support\Facades\Http;
+class UserController extends Controller
+{
+    function index(){
+        $data = Http::get("https://reqres.in/api/users?page=1");
+        return view('users',['collection'=>$data]);
+    }
+}
+2. In users.blade.php:
+<table>
+<tr>
+<td>ID</td>
+<td>Name</td>
+<td>Email</td>
+<td>Profile Photo</td>
+</tr>
+@foreach($collection as $user)
+<tr>
+<td>{{$user['id']}}</td>
+<td>{{$user['name']}}</td>
+<td>{{$user['email']}}</td>
+<td>Profile Photo</td>
+</tr>
+@endforeach
+</table>
+
+->also see dd and dump

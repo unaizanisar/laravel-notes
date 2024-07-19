@@ -1,0 +1,26 @@
+FORM VALIDATION
+1. In LoginController.php:
+class LoginController extends Controller
+{
+    public function getData(Request $req){
+        $req->validate([
+            'username'=>'required',
+            'password'=>'required'
+        ]);
+        return $req->input();
+    }
+}
+2. In login.blade.php:
+<x-header componentName="Login"/>
+<h1>User Login</h1>
+<!-- this is the action we used in route url. {{old}} is used to keep the already filled field's data. -->
+<form method="POST" action="login"> 
+    @csrf
+    <input type="text" name="username" placeholder="User Name" value="{{ old('username') }}"> <br>
+    <span style= "color:red">@error('username'){{$message}}@enderror</span>
+    <br><br>
+    <input type="password" name="password" placeholder="Password" value="{{ old('password') }}"> <br> 
+    <span style="color:red">@error('password'){{$message}}@enderror</span> <br>
+    <br><br>
+    <button type="submit">Login</button>
+</form>

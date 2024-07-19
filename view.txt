@@ -1,0 +1,33 @@
+VIEW:
+Complete HTML part, which we want to show the user.
+We can call view through controller and simply from route also.
+If you want to return the view through route:
+Route::get('/',function(){
+    return view('about');
+});
+If you want to return the view through controller:
+1. In controller make a function:
+class UserController extends Controller
+{
+    public funtion index(){
+        return view('about');
+    }
+}
+2. In web.php, route this controller and the function:
+Route::get('about',[UserController::class,'index']);
+
+PASS PARAMETERS IN VIEW:
+1. Route::get('about/{user}',[UserController::class,'index']);
+2. In controller:
+class UserController extends Controller
+{
+    public funtion index($user){
+        return view('about',['name'=>$user]);
+    }
+}
+3. In view, users.blade.php:
+<h1>Hello{{$name}}</h1>
+
+QUESTION?
+Is there any function to check that the view exists or not?
+We made the controller though command line, but we don't make the view with the command line?

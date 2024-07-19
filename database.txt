@@ -1,0 +1,4 @@
+DATABASE:
+Change the env file and give your username, password of mysql.
+
+php artisan migrate

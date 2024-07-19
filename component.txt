@@ -1,0 +1,33 @@
+COMPONENT:
+Component is a piece of code which we can reuse again and again.
+For example, header and footer, they are same for the whole website. So, we can make a component for this and can use it again and again.
+HOW TO MAKE A COMPONENT?
+Through command line, 2 files will be generated, one will be php file and other html file.
+php artisan make:component Header
+- this will create component->header.blade.php
+- View/Component->header.php
+
+1. First, make a view hello.blade.php and call header:
+<x-header />
+OR If you want to pass the name of the page also:
+<x-header componentName=>"Hello"> 
+To get the name, go to header.php:
+public $title="";
+public function __construct($componentName)
+    {
+        $this->title=$componentName;
+    }
+
+2. In header.blade.php:
+<h1>Header Component</h1>
+OR
+<h1>{{$title}}'s Header Component</h1>
+
+3. Route hello.blade.php:
+Route :: get('/hello',function(){
+    return view('hello');
+});
+
+4. Now see how component works on other pages, make another view about.blade,php:
+QUESTION?
+Can we use components directly through route?

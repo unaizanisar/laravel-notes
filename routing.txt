@@ -1,0 +1,17 @@
+ROUTING!
+If you want to pass some data in the URL:
+Route::get('/{name}', function($name){
+    echo $name;
+    return view('welcome');
+});
+If you want that the name should appear on your welcome.php:
+Rout::get('/{name}', function($name){
+    return view('welcome', ['name' => $name]);
+});
+then go to web.php and write: {{$name}}
+
+ANCHOR TAGS:
+<a href = "/about">About</a>
+
+REDIRECT:
+If you don't want that the web.php opens first, you can redirect it to any other page:

@@ -1,0 +1,29 @@
+MODEL:
+Map Database table with class name, for example, if database name is users, then model name would be user. Similarly, if database name is employees, then model name would be employee. Database name is plural and model name is singular.
+Define database structure
+Write business logic
+
+1. Set enviroment variables in env folder.
+2. There is already one model present User.php, delete it and make a new one:
+php artisan make:model User
+3. Make a controller:
+php artisan make:controller UserController
+4. In UserController, add link to model:
+use App\Models\User;
+then add function:
+function getData(){
+    return User::all();
+}
+5. Route this function in web.php:
+Route::get('users',[UserController::class,'getData']);
+
+If the table is employee:
+then in model user.php:
+class User extends Model
+{
+    use HasFactory;
+    public $table="employee";
+}
+
+QUESTION?
+Can we fetch the data of two tables using one model?

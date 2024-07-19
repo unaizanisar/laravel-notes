@@ -1,0 +1,30 @@
+HTML FORM:
+1. Make controller and add function getData():
+$php artisan make:controller UsersController
+class UsersController extends Controller{
+    public function getData(Request $req){
+        return $req->input();
+    }
+}
+
+2. Route that controller:
+Route::get('users',[UsersController::class,'getData']);
+
+3. Make a new view users.blade.php:
+<h1>User Login</h1>
+<!-- this is the action we used in route url. -->
+<form method="POST" action="users"> 
+    @csrf
+    <input type="text" name="username" placeholder="User Name">
+    <br><br>
+    <input type="password" name="password" placeholder="Password">
+    <br><br>
+    <button type="submit">Login</button>
+</form>
+
+4. Change the above route from get to post:
+Route::post('users',[UsersController::class,'getData']);
+Route::get("login",'users');
+
+QUESTION?
+What is the need of csrf?
